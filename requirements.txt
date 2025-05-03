@@ -1,5 +1,5 @@
 Flask>=2.0.0
-pandas>=1.3.0
+pandas==2.2.2
 
 
 # Optional but common dependencies used in HTML rendering and datetime handling
