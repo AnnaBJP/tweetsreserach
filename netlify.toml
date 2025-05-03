@@ -1,5 +1,5 @@
 [build]
-command = "python freeze.py"
+command = "python src/freeze.py"
 publish = "build"
 
 [dev]
