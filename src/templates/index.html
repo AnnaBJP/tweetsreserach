@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweets Archive</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Wayback Tweets Archive</h1>
+        <form method="POST" action="/">
+            <label for="username">Twitter Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="from_date">From Date:</label>
+            <input type="date" id="from_date" name="from_date" required>
+
+            <label for="to_date">To Date:</label>
+            <input type="date" id="to_date" name="to_date" required>
+
+            <label for="limit">Limit:</label>
+            <input type="number" id="limit" name="limit">
+
+            <label for="offset">Offset:</label>
+            <input type="number" id="offset" name="offset">
+
+            <label for="unique">Unique:</label>
+            <input type="checkbox" id="unique" name="unique">
+
+            <button type="submit">Fetch Tweets</button>
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if tweets_data %}
+            <h2>Tweets Found: {{ tweets_data.count }}</h2>
+            <div>
+                <h3>Download Options:</h3>
+                <form method="POST" action="/download/csv">
+                    <input type="hidden" name="data" value="{{ tweets_data.csv }}">
+                    <input type="hidden" name="filename" value="{{ tweets_data.filename }}">
+                    <button type="submit">Download CSV</button>
+                </form>
+                <form method="POST" action="/download/json">
+                    <input type="hidden" name="data" value="{{ tweets_data.json }}">
+                    <input type="hidden" name="filename" value="{{ tweets_data.filename }}">
+                    <button type="submit">Download JSON</button>
+                </form>
+                <form method="POST" action="/download/html">
+                    <input type="hidden" name="data" value="{{ tweets_data.html }}">
+                    <input type="hidden" name="filename" value="{{ tweets_data.filename }}">
+                    <button type="submit">Download HTML</button>
+                </form>
+            </div>
+            <div>
+                <h3>Tweets Table:</h3>
+                {{ tweets_data.table|safe }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

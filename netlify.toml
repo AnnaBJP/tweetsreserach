@@ -1,0 +1,11 @@
+[build]
+  command = "pip install -r requirements.txt && python src/app.py"
+  functions = "functions"
+  publish = "src/static"
+
+[dev]
+  command = "python src/app.py"
+  publish = "src/static"
+
+[functions]
+  directory = "functions"
