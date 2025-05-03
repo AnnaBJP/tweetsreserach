@@ -1,7 +1,6 @@
 [build]
-  command = "pip install -r requirements.txt && python src/app.py"
-  functions = "functions"
-  publish = "src/static"
+command = "python freeze.py"
+publish = "build"
 
 [dev]
   command = "python src/app.py"

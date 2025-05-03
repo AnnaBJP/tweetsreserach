@@ -1,7 +1,7 @@
 Flask>=2.0.0
 pandas
 
-
+Frozen-Flask
 # Optional but common dependencies used in HTML rendering and datetime handling
 jinja2>=3.0.0
 
