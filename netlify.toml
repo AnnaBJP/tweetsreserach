@@ -5,6 +5,3 @@ publish = "build"
 [dev]
   command = "python src/app.py"
   publish = "src/static"
-
-[functions]
-  directory = "functions"
